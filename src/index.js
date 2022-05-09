@@ -66,9 +66,16 @@ async function scrapProfile(cred) {
         singleProfile = true;
     }
 
-
+    /*
     const browser = await puppeteer.launch({
         headless: true
+    });
+    */
+    const browser = await puppeteer.launch({
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+      ],
     });
     const page = await browser.newPage();
     await page.goto('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin', { waitUntil: 'load' });
